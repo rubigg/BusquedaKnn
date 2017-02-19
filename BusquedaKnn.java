@@ -15,8 +15,8 @@ public class BusquedaKnn {
         int k = entrada.nextInt();
 
 
-		/*int n =10;
-		int d =10;*/
+		int n =10;
+		int d =10;
         int g =0;
         double suma=0.0;
 
