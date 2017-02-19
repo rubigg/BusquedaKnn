@@ -100,7 +100,8 @@ public class BusquedaKnn {
         else{
             System.out.println ("El numero no esta esta en la posision: " + (pos+1));
         }
-
+	
+	 //rubi
 
     }//main
 }
