@@ -7,13 +7,13 @@ public class BusquedaKnn {
        Scanner entrada = new Scanner(System.in);
         DecimalFormat formateador = new DecimalFormat("#.###");
 
-        System.out.println ("Dime el valor de n");
+       /* System.out.println ("Dime el valor de n");
         int n = entrada.nextInt();
         System.out.println ("Dime el valor de d");
-        int d = entrada.nextInt();
+        int d = entrada.nextInt();*/
 
-		/*int n =10;
-		int d =10;*/
+		int n =10;
+		int d =10;
         int g =0;
         double suma=0.0;
 
