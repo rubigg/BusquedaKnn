@@ -11,6 +11,9 @@ public class BusquedaKnn {
         int n = entrada.nextInt();
         System.out.println ("Dime el valor de d");
         int d = entrada.nextInt();
+	System.out.println ("Dime el valor de k");
+        int k = entrada.nextInt();
+
 
 		/*int n =10;
 		int d =10;*/
