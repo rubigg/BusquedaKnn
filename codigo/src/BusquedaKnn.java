@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 import java.text.DecimalFormat;
 import java.io.*;
@@ -6,12 +7,12 @@ public class BusquedaKnn {
 
     String linea = null;
 
-    public double []cargarNumeros()
+    public String []cargarNumeros()
     {
         File archivo1 = new File("Numeros.txt");
         FileReader fr1 = null;
         BufferedReader bfr1= null;
-        double numerosCargados[] = new double [1000];
+        String numerosCargados[] = new String [1000];
 
         try
         {
@@ -21,6 +22,7 @@ public class BusquedaKnn {
             int conta=0; //sirve para contar las lineas del archivo
             while ((linea = bfr1.readLine())!=null)
             {
+                numerosCargados[conta] = linea.toUpperCase();
                 conta++;
             }
 
@@ -59,8 +61,7 @@ public class BusquedaKnn {
 
         for (int i = 0; i<bu.cargarNumeros().length; i++)
         {
-            String cadena = String.valueOf(bu.cargarNumeros()[i]);
-            if(cadena!=null)
+            if(bu.cargarNumeros()[i]!=null)
             {
                 contaNumeros++;
             }
@@ -75,6 +76,51 @@ public class BusquedaKnn {
             System.out.println ("Se han cargado "+contaNumeros+" numeros");
         }
     }//metodo Verificar Archivo
+
+    ////////////////////////////////////////////////////////////////////////////////
+    public void borrarArchivo()
+    {
+        Scanner entrada = new Scanner(System.in);
+
+        FileWriter archivo1 = null;
+        PrintWriter pw1 = null;
+
+        System.out.println ("¿Estas seguro de querer borrar el archivo? S/N");
+        String res = entrada.next();
+        res.toLowerCase();
+        if(res.equals("s"))
+        {
+            try
+            {
+                archivo1 = new FileWriter("Numeros.txt",false);
+            }
+            catch(FileNotFoundException fnfe)
+            {
+                fnfe.getMessage();
+            }
+            catch(IOException ioe)
+            {
+                ioe.getMessage();
+            }
+            finally
+            {
+                try
+                {
+                    archivo1.close();
+                }
+                catch(Exception ex)
+                {
+                    ex.getMessage();
+                }
+
+            } //finally
+            System.out.println ("!!!!!!HAS BORRADO LOS ARCHIVOS!!!!!!");
+        }
+        else
+        {
+            System.out.println ("No lo has Borrado!!!");
+        }
+    } //metodo borrar Archivo
 
     ////////////////////////////////////////////////////////////////////////////////
     public void llenarArchivo()
@@ -133,51 +179,6 @@ public class BusquedaKnn {
         }
     }//metodo Llenar archivo
 
-    ////////////////////////////////////////////////////////////////////////////////
-    public void borrarArchivo()
-    {
-        Scanner entrada = new Scanner(System.in);
-
-        FileWriter archivo1 = null;
-        PrintWriter pw1 = null;
-
-        System.out.println ("¿Estas seguro de querer borrar el archivo? S/N");
-        String res = entrada.next();
-        res.toLowerCase();
-        if(res.equals("s"))
-        {
-            try
-            {
-                archivo1 = new FileWriter("Numeros.txt",false);
-            }
-            catch(FileNotFoundException fnfe)
-            {
-                fnfe.getMessage();
-            }
-            catch(IOException ioe)
-            {
-                ioe.getMessage();
-            }
-            finally
-            {
-                try
-                {
-                    archivo1.close();
-                }
-                catch(Exception ex)
-                {
-                    ex.getMessage();
-                }
-
-            } //finally
-            System.out.println ("!!!!!!HAS BORRADO LOS ARCHIVOS!!!!!!");
-        }
-        else
-        {
-            System.out.println ("No lo has Borrado!!!");
-        }
-    } //metodo borrar Archivo
-
     ///////////////////////////////////////////////////////////////////////////////
     public double distanciaEuclidiana(double[]m, double[]q){
 
@@ -194,6 +195,7 @@ public class BusquedaKnn {
 }//clase BusquedaKnn
 
 class PruebaBusquedaKnn {
+
     public static void main (String[] args) {
         Scanner entrada = new Scanner(System.in);
         DecimalFormat formateador = new DecimalFormat("#.###");
@@ -224,7 +226,7 @@ class PruebaBusquedaKnn {
 
                 case 3: BusquedaKnn bu3= new BusquedaKnn();
 
-                    //double distancia=bu3.distanciaEuclidiana(bu3.llenarArchivo(m),bu3.llenarArchivo(q));
+                    //	double distancia=bu3.distanciaEuclidiana(bu3.llenarArchivo(m),bu3.llenarArchivo(q));
                     //System.out.println ("l = " + formateador.format(distancia));
 
                     do{
@@ -257,4 +259,4 @@ class PruebaBusquedaKnn {
         while (opcion!=4) ;
     }//main
 
-}
+}//clase principal
